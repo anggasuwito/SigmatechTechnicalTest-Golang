@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  sigmatech-golang:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    container_name: sigmatech-golang
+    image: sigmatech-golang
+    restart: always
+    ports:
+      # expose 8008 listen 8008
+      - "8008:8008"
