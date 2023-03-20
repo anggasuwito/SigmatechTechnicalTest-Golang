@@ -2,7 +2,7 @@ package r_authentication
 
 import "SigmatechTechnicalTest-Golang/api/models"
 
-func (r AuthenticationRepo) GetUserByNIKRepo(nik string) (res models.User, err error) {
+func (r AuthenticationRepo) GetUserByIDRepo(id string) (res models.User, err error) {
 	err = r.DB.
 		QueryRow(`
 			SELECT 
@@ -19,11 +19,11 @@ func (r AuthenticationRepo) GetUserByNIKRepo(nik string) (res models.User, err e
 				u.updated_at,
 				u.deleted_at
 			FROM user u
-			WHERE u.nik = ?
+			WHERE u.id = ?
 				AND u.deleted_at IS NULL
 			ORDER BY u.created_at DESC
 			LIMIT 1
-		`, nik).Scan(
+		`, id).Scan(
 		&res.ID,
 		&res.NIK,
 		&res.FullName,

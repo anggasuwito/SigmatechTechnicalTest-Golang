@@ -1,22 +1,22 @@
 package models
 
-import "time"
+import "database/sql"
 
 type LoginRequest struct {
 	NIK string `json:"nik"`
 }
 
 type User struct {
-	ID            string    `json:"id"`
-	NIK           string    `json:"nik"`
-	FullName      string    `json:"full_name"`
-	LegalName     string    `json:"legal_name"`
-	BirthPlace    string    `json:"birth_place"`
-	BirthDate     string    `json:"birth_date"`
-	Salary        int       `json:"salary"`
-	IdentityPhoto string    `json:"identity_photo"`
-	SelfiePhoto   string    `json:"selfie_photo"`
-	CreatedAt     time.Time `json:"created_at"`
-	UpdatedAt     time.Time `json:"updated_at"`
-	DeletedAt     time.Time `json:"deleted_at"`
+	ID            sql.NullString `json:"id"`
+	NIK           sql.NullString `json:"nik"`
+	FullName      sql.NullString `json:"full_name"`
+	LegalName     sql.NullString `json:"legal_name"`
+	BirthPlace    sql.NullString `json:"birth_place"`
+	BirthDate     sql.NullString `json:"birth_date"`
+	Salary        sql.NullInt64  `json:"salary"`
+	IdentityPhoto sql.NullString `json:"identity_photo"`
+	SelfiePhoto   sql.NullString `json:"selfie_photo"`
+	CreatedAt     sql.NullString `json:"created_at"`
+	UpdatedAt     sql.NullString `json:"updated_at"`
+	DeletedAt     sql.NullString `json:"deleted_at"`
 }

@@ -31,3 +31,13 @@ func JSON(res Response) {
 		})
 	}
 }
+
+func JSONUnauthorized(res Response) {
+	res.Ctx.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{
+		"status":       false,
+		"message":      "unauthenticate",
+		"data":         nil,
+		"meta":         nil,
+		"err_response": res.Error.Error(),
+	})
+}

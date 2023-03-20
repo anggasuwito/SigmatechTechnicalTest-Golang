@@ -8,7 +8,7 @@ import (
 
 func (c AuthenticationController) Login(g *gin.Context) {
 	var req models.LoginRequest
-	g.ShouldBind(&req)
+	g.ShouldBindJSON(&req)
 	res, err := c.UC.AuthenticationUC.LoginUC(req)
 	response.JSON(response.Response{
 		Ctx:   g,

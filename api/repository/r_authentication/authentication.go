@@ -11,4 +11,9 @@ type AuthenticationRepo struct {
 
 type AuthenticationRepoInterface interface {
 	GetUserByNIKRepo(nik string) (res models.User, err error)
+	GetUserByIDRepo(id string) (res models.User, err error)
+}
+
+func NewAuthenticationRepo(db *sql.DB) AuthenticationRepoInterface {
+	return &AuthenticationRepo{DB: db}
 }

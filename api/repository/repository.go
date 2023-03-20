@@ -1,16 +1,19 @@
 package repository
 
 import (
-	"SigmatechTechnicalTest-Golang/api/repository/r_order"
+	"SigmatechTechnicalTest-Golang/api/repository/r_authentication"
+	"SigmatechTechnicalTest-Golang/api/repository/r_transaction"
 	"database/sql"
 )
 
 type Repository struct {
-	OrderRepo r_order.OrderRepoInterface
+	AuthenticationRepo r_authentication.AuthenticationRepoInterface
+	TransactionRepo    r_transaction.TransactionRepoInterface
 }
 
 func NewRepository(db *sql.DB) Repository {
 	return Repository{
-		OrderRepo: r_order.NewOrderRepo(db),
+		AuthenticationRepo: r_authentication.NewAuthenticationRepo(db),
+		TransactionRepo:    r_transaction.NewTransactionRepo(db),
 	}
 }

@@ -15,6 +15,7 @@ func Init() {
 	c := controller.NewController(config.ConnDB())
 
 	route.Authentication(v1Api, c)
+	route.Transaction(v1Api, c)
 
 	r.Run(os.Getenv("ADDRESS"))
 }
