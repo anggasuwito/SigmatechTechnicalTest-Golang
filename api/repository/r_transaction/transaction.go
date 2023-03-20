@@ -11,6 +11,7 @@ type TransactionRepo struct {
 
 type TransactionRepoInterface interface {
 	BeginTX() (*sql.Tx, error)
+	GetListOrderRepo(userID string) (res []models.TransactionList, err error)
 	GetTransactionSettingRepo(userID string, tenor int) (res models.TransactionSetting, err error)
 	TXGetAvailCompanyAsset(tx *sql.Tx, id string) (res models.CompanyAsset, err error)
 	TXUpdateCompanyAsset(tx *sql.Tx, id string) (err error)

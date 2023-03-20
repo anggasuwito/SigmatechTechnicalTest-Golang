@@ -9,5 +9,6 @@ import (
 func Transaction(r *gin.RouterGroup, c controller.Controller) {
 	transactionAPI := r.Group("/transaction")
 	transactionAPI.Use(middleware.VerifyToken())
-	transactionAPI.GET("/buy", c.TransactionController.Buy)
+	transactionAPI.POST("/buy", c.TransactionController.Buy)
+	transactionAPI.GET("/list-order", c.TransactionController.ListOrder)
 }

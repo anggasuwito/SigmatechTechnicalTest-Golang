@@ -11,6 +11,7 @@ type TransactionUC struct {
 
 type TransactionUCInterface interface {
 	BuyUC(req models.TransactionBuyRequest) (res string, err error)
+	ListOrderUC(userID string) (res []models.TransactionListResponse, err error)
 }
 
 func NewTransactionUC(repo repository.Repository) TransactionUCInterface {

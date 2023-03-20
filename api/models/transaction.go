@@ -5,9 +5,10 @@ import (
 )
 
 type TransactionBuyRequest struct {
-	UserID         string `json:"user_id"`
-	Tenor          int    `json:"tenor"`
-	CompanyAssetID string `json:"company_asset_id"`
+	UserID               string `json:"user_id"`
+	Tenor                int    `json:"tenor"`
+	CompanyAssetID       string `json:"company_asset_id"`
+	TransactionSettingID string `json:"transaction_setting_id"`
 }
 
 type TransactionSetting struct {
@@ -19,6 +20,25 @@ type TransactionSetting struct {
 	CreatedAt sql.NullString `json:"created_at"`
 	UpdatedAt sql.NullString `json:"updated_at"`
 	DeletedAt sql.NullString `json:"deleted_at"`
+}
+
+type TransactionList struct {
+	ID        sql.NullString `json:"id"`
+	OTRPrice  sql.NullInt64  `json:"otr_price"`
+	Fee       sql.NullInt64  `json:"fee"`
+	Tenor     sql.NullInt64  `json:"tenor"`
+	Interest  sql.NullInt64  `json:"interest"`
+	AssetName sql.NullString `json:"asset_name"`
+}
+
+type TransactionListResponse struct {
+	TransactionID string `json:"transaction_id"`
+	OTRPrice      int64  `json:"otr_price"`
+	AdminFee      int64  `json:"admin_fee"`
+	Tenor         int64  `json:"tenor"`
+	Interest      int64  `json:"interest"`
+	AssetName     string `json:"asset_name"`
+	TotalPrice    int64  `json:"total_price"`
 }
 
 type CompanyAsset struct {

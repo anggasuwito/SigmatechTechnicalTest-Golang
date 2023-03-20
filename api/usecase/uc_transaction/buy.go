@@ -15,12 +15,13 @@ func (uc TransactionUC) BuyUC(req models.TransactionBuyRequest) (res string, err
 		return res, err
 	}
 
-	_, err = uc.Repo.TransactionRepo.GetTransactionSettingRepo(req.UserID, req.Tenor)
+	transactionSetting, err := uc.Repo.TransactionRepo.GetTransactionSettingRepo(req.UserID, req.Tenor)
 	if err != nil && strings.Contains(err.Error(), "no rows in result set") {
 		return res, fmt.Errorf("you are not allow to request with %v tenor", req.Tenor)
 	} else if err != nil {
 		return res, err
 	}
+	req.TransactionSettingID = transactionSetting.ID.String
 
 	tx, _ := uc.Repo.TransactionRepo.BeginTX()
 	companyAsset, err := uc.Repo.TransactionRepo.TXGetAvailCompanyAsset(tx, req.CompanyAssetID)

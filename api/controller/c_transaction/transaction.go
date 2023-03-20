@@ -11,6 +11,7 @@ type TransactionController struct {
 
 type TransactionControllerInterface interface {
 	Buy(g *gin.Context)
+	ListOrder(g *gin.Context)
 }
 
 func NewTransactionController(uc usecase.UseCase) TransactionControllerInterface {
